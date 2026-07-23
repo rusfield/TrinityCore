@@ -44,6 +44,9 @@ DB2Storage<AdventureJournalEntry>               sAdventureJournalStore("Adventur
 DB2Storage<AdventureMapPOIEntry>                sAdventureMapPOIStore("AdventureMapPOI.db2", &AdventureMapPoiLoadInfo::Instance);
 DB2Storage<AnimationDataEntry>                  sAnimationDataStore("AnimationData.db2", &AnimationDataLoadInfo::Instance);
 DB2Storage<AnimKitEntry>                        sAnimKitStore("AnimKit.db2", &AnimKitLoadInfo::Instance);
+DB2Storage<AnimKitConfigEntry>                  sAnimKitConfigStore("AnimKitConfig.db2", &AnimKitConfigLoadInfo::Instance);
+DB2Storage<AnimKitConfigBoneSetEntry>           sAnimKitConfigBoneSetStore("AnimKitConfigBoneSet.db2", &AnimKitConfigBoneSetLoadInfo::Instance);
+DB2Storage<AnimKitSegmentEntry>                 sAnimKitSegmentStore("AnimKitSegment.db2", &AnimKitSegmentLoadInfo::Instance);
 DB2Storage<AreaGroupMemberEntry>                sAreaGroupMemberStore("AreaGroupMember.db2", &AreaGroupMemberLoadInfo::Instance);
 DB2Storage<AreaTableEntry>                      sAreaTableStore("AreaTable.db2", &AreaTableLoadInfo::Instance);
 DB2Storage<AreaTriggerEntry>                    sAreaTriggerStore("AreaTrigger.db2", &AreaTriggerLoadInfo::Instance);
@@ -120,6 +123,8 @@ DB2Storage<CorruptionEffectsEntry>              sCorruptionEffectsStore("Corrupt
 DB2Storage<CraftingQualityEntry>                sCraftingQualityStore("CraftingQuality.db2", &CraftingQualityLoadInfo::Instance);
 DB2Storage<CreatureDisplayInfoEntry>            sCreatureDisplayInfoStore("CreatureDisplayInfo.db2", &CreatureDisplayInfoLoadInfo::Instance);
 DB2Storage<CreatureDisplayInfoExtraEntry>       sCreatureDisplayInfoExtraStore("CreatureDisplayInfoExtra.db2", &CreatureDisplayInfoExtraLoadInfo::Instance);
+DB2Storage<CreatureDisplayInfoGeosetDataEntry>  sCreatureDisplayInfoGeosetDataStore("CreatureDisplayInfoGeosetData.db2", &CreatureDisplayInfoGeosetDataLoadInfo::Instance);
+DB2Storage<CreatureDisplayInfoOptionEntry>      sCreatureDisplayInfoOptionStore("CreatureDisplayInfoOption.db2", &CreatureDisplayInfoOptionLoadInfo::Instance);
 DB2Storage<CreatureFamilyEntry>                 sCreatureFamilyStore("CreatureFamily.db2", &CreatureFamilyLoadInfo::Instance);
 DB2Storage<CreatureLabelEntry>                  sCreatureLabelStore("CreatureLabel.db2", &CreatureLabelLoadInfo::Instance);
 DB2Storage<CreatureModelDataEntry>              sCreatureModelDataStore("CreatureModelData.db2", &CreatureModelDataLoadInfo::Instance);
@@ -199,6 +204,9 @@ DB2Storage<ItemDamageOneHandCasterEntry>        sItemDamageOneHandCasterStore("I
 DB2Storage<ItemDamageTwoHandEntry>              sItemDamageTwoHandStore("ItemDamageTwoHand.db2", &ItemDamageTwoHandLoadInfo::Instance);
 DB2Storage<ItemDamageTwoHandCasterEntry>        sItemDamageTwoHandCasterStore("ItemDamageTwoHandCaster.db2", &ItemDamageTwoHandCasterLoadInfo::Instance);
 DB2Storage<ItemDisenchantLootEntry>             sItemDisenchantLootStore("ItemDisenchantLoot.db2", &ItemDisenchantLootLoadInfo::Instance);
+DB2Storage<ItemDisplayInfoEntry>                sItemDisplayInfoStore("ItemDisplayInfo.db2", &ItemDisplayInfoLoadInfo::Instance);
+DB2Storage<ItemDisplayInfoMaterialResEntry>     sItemDisplayInfoMaterialResStore("ItemDisplayInfoMaterialRes.db2", &ItemDisplayInfoMaterialResLoadInfo::Instance);
+DB2Storage<ItemDisplayInfoModelMatResEntry>     sItemDisplayInfoModelMatResStore("ItemDisplayInfoModelMatRes.db2", &ItemDisplayInfoModelMatResLoadInfo::Instance);
 DB2Storage<ItemEffectEntry>                     sItemEffectStore("ItemEffect.db2", &ItemEffectLoadInfo::Instance);
 DB2Storage<ItemEntry>                           sItemStore("Item.db2", &ItemLoadInfo::Instance);
 DB2Storage<ItemExtendedCostEntry>               sItemExtendedCostStore("ItemExtendedCost.db2", &ItemExtendedCostLoadInfo::Instance);
@@ -251,6 +259,7 @@ DB2Storage<MountXDisplayEntry>                  sMountXDisplayStore("MountXDispl
 DB2Storage<MovieEntry>                          sMovieStore("Movie.db2", &MovieLoadInfo::Instance);
 DB2Storage<MythicPlusSeasonEntry>               sMythicPlusSeasonStore("MythicPlusSeason.db2", &MythicPlusSeasonLoadInfo::Instance);
 DB2Storage<NameGenEntry>                        sNameGenStore("NameGen.db2", &NameGenLoadInfo::Instance);
+DB2Storage<NPCModelItemSlotDisplayInfoEntry>    sNPCModelItemSlotDisplayInfoStore("NPCModelItemSlotDisplayInfo.db2", &NPCModelItemSlotDisplayInfoLoadInfo::Instance);
 DB2Storage<NamesProfanityEntry>                 sNamesProfanityStore("NamesProfanity.db2", &NamesProfanityLoadInfo::Instance);
 DB2Storage<NamesReservedEntry>                  sNamesReservedStore("NamesReserved.db2", &NamesReservedLoadInfo::Instance);
 DB2Storage<NamesReservedLocaleEntry>            sNamesReservedLocaleStore("NamesReservedLocale.db2", &NamesReservedLocaleLoadInfo::Instance);
@@ -677,6 +686,9 @@ uint32 DB2Manager::LoadStores(std::string const& dataPath, LocaleConstant defaul
     LOAD_DB2(sAdventureMapPOIStore);
     LOAD_DB2(sAnimationDataStore);
     LOAD_DB2(sAnimKitStore);
+    LOAD_DB2(sAnimKitConfigStore);
+    LOAD_DB2(sAnimKitConfigBoneSetStore);
+    LOAD_DB2(sAnimKitSegmentStore);
     LOAD_DB2(sAreaGroupMemberStore);
     LOAD_DB2(sAreaTableStore);
     LOAD_DB2(sAreaTriggerStore);
@@ -752,6 +764,8 @@ uint32 DB2Manager::LoadStores(std::string const& dataPath, LocaleConstant defaul
     LOAD_DB2(sCraftingQualityStore);
     LOAD_DB2(sCreatureDisplayInfoStore);
     LOAD_DB2(sCreatureDisplayInfoExtraStore);
+    LOAD_DB2(sCreatureDisplayInfoGeosetDataStore);
+    LOAD_DB2(sCreatureDisplayInfoOptionStore);
     LOAD_DB2(sCreatureFamilyStore);
     LOAD_DB2(sCreatureLabelStore);
     LOAD_DB2(sCreatureModelDataStore);
@@ -831,6 +845,9 @@ uint32 DB2Manager::LoadStores(std::string const& dataPath, LocaleConstant defaul
     LOAD_DB2(sItemDamageTwoHandStore);
     LOAD_DB2(sItemDamageTwoHandCasterStore);
     LOAD_DB2(sItemDisenchantLootStore);
+    LOAD_DB2(sItemDisplayInfoStore);
+    LOAD_DB2(sItemDisplayInfoMaterialResStore);
+    LOAD_DB2(sItemDisplayInfoModelMatResStore);
     LOAD_DB2(sItemEffectStore);
     LOAD_DB2(sItemStore);
     LOAD_DB2(sItemExtendedCostStore);
@@ -883,6 +900,7 @@ uint32 DB2Manager::LoadStores(std::string const& dataPath, LocaleConstant defaul
     LOAD_DB2(sMovieStore);
     LOAD_DB2(sMythicPlusSeasonStore);
     LOAD_DB2(sNameGenStore);
+    LOAD_DB2(sNPCModelItemSlotDisplayInfoStore);
     LOAD_DB2(sNamesProfanityStore);
     LOAD_DB2(sNamesReservedStore);
     LOAD_DB2(sNamesReservedLocaleStore);

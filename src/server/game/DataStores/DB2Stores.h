@@ -37,6 +37,9 @@ TC_GAME_API extern DB2Storage<AdventureJournalEntry>                sAdventureJo
 TC_GAME_API extern DB2Storage<AdventureMapPOIEntry>                 sAdventureMapPOIStore;
 TC_GAME_API extern DB2Storage<AnimationDataEntry>                   sAnimationDataStore;
 TC_GAME_API extern DB2Storage<AnimKitEntry>                         sAnimKitStore;
+TC_GAME_API extern DB2Storage<AnimKitConfigEntry>                   sAnimKitConfigStore;
+TC_GAME_API extern DB2Storage<AnimKitConfigBoneSetEntry>            sAnimKitConfigBoneSetStore;
+TC_GAME_API extern DB2Storage<AnimKitSegmentEntry>                  sAnimKitSegmentStore;
 TC_GAME_API extern DB2Storage<AreaTableEntry>                       sAreaTableStore;
 TC_GAME_API extern DB2Storage<AreaTriggerEntry>                     sAreaTriggerStore;
 TC_GAME_API extern DB2Storage<AreaTriggerActionSetEntry>            sAreaTriggerActionSetStore;
@@ -90,6 +93,8 @@ TC_GAME_API extern DB2Storage<CorruptionEffectsEntry>               sCorruptionE
 TC_GAME_API extern DB2Storage<CraftingQualityEntry>                 sCraftingQualityStore;
 TC_GAME_API extern DB2Storage<CreatureDisplayInfoEntry>             sCreatureDisplayInfoStore;
 TC_GAME_API extern DB2Storage<CreatureDisplayInfoExtraEntry>        sCreatureDisplayInfoExtraStore;
+TC_GAME_API extern DB2Storage<CreatureDisplayInfoGeosetDataEntry>   sCreatureDisplayInfoGeosetDataStore;
+TC_GAME_API extern DB2Storage<CreatureDisplayInfoOptionEntry>       sCreatureDisplayInfoOptionStore;
 TC_GAME_API extern DB2Storage<CreatureFamilyEntry>                  sCreatureFamilyStore;
 TC_GAME_API extern DB2Storage<CreatureModelDataEntry>               sCreatureModelDataStore;
 TC_GAME_API extern DB2Storage<CreatureTypeEntry>                    sCreatureTypeStore;
@@ -155,6 +160,9 @@ TC_GAME_API extern DB2Storage<ItemDamageOneHandCasterEntry>         sItemDamageO
 TC_GAME_API extern DB2Storage<ItemDamageTwoHandEntry>               sItemDamageTwoHandStore;
 TC_GAME_API extern DB2Storage<ItemDamageTwoHandCasterEntry>         sItemDamageTwoHandCasterStore;
 TC_GAME_API extern DB2Storage<ItemDisenchantLootEntry>              sItemDisenchantLootStore;
+TC_GAME_API extern DB2Storage<ItemDisplayInfoEntry>                 sItemDisplayInfoStore;
+TC_GAME_API extern DB2Storage<ItemDisplayInfoMaterialResEntry>      sItemDisplayInfoMaterialResStore;
+TC_GAME_API extern DB2Storage<ItemDisplayInfoModelMatResEntry>      sItemDisplayInfoModelMatResStore;
 TC_GAME_API extern DB2Storage<ItemEffectEntry>                      sItemEffectStore;
 TC_GAME_API extern DB2Storage<ItemEntry>                            sItemStore;
 TC_GAME_API extern DB2Storage<ItemExtendedCostEntry>                sItemExtendedCostStore;
@@ -200,6 +208,7 @@ TC_GAME_API extern DB2Storage<MountEntry>                           sMountStore;
 TC_GAME_API extern DB2Storage<MountEquipmentEntry>                  sMountEquipmentStore;
 TC_GAME_API extern DB2Storage<MovieEntry>                           sMovieStore;
 TC_GAME_API extern DB2Storage<MythicPlusSeasonEntry>                sMythicPlusSeasonStore;
+TC_GAME_API extern DB2Storage<NPCModelItemSlotDisplayInfoEntry>     sNPCModelItemSlotDisplayInfoStore;
 TC_GAME_API extern DB2Storage<OverrideSpellDataEntry>               sOverrideSpellDataStore;
 TC_GAME_API extern DB2Storage<ParagonReputationEntry>               sParagonReputationStore;
 TC_GAME_API extern DB2Storage<PerksActivityEntry>                   sPerksActivityStore;

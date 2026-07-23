@@ -76,6 +76,22 @@ void HotfixDatabaseConnection::DoPrepareStatements()
         " WHERE (`VerifiedBuild` > 0) = ?", CONNECTION_SYNCH);
     PREPARE_MAX_ID_STMT(HOTFIX_SEL_ANIM_KIT, "SELECT MAX(ID) + 1 FROM anim_kit", CONNECTION_SYNCH);
 
+    // AnimKitConfig.db2
+    PrepareStatement(HOTFIX_SEL_ANIM_KIT_CONFIG, "SELECT ID, ConfigFlags FROM anim_kit_config WHERE (`VerifiedBuild` > 0) = ?", CONNECTION_SYNCH);
+    PREPARE_MAX_ID_STMT(HOTFIX_SEL_ANIM_KIT_CONFIG, "SELECT MAX(ID) + 1 FROM anim_kit_config", CONNECTION_SYNCH);
+
+    // AnimKitConfigBoneSet.db2
+    PrepareStatement(HOTFIX_SEL_ANIM_KIT_CONFIG_BONE_SET, "SELECT ID, AnimKitBoneSetID, AnimKitPriorityID, ParentAnimKitConfigID FROM "
+        "anim_kit_config_bone_set WHERE (`VerifiedBuild` > 0) = ?", CONNECTION_SYNCH);
+    PREPARE_MAX_ID_STMT(HOTFIX_SEL_ANIM_KIT_CONFIG_BONE_SET, "SELECT MAX(ID) + 1 FROM anim_kit_config_bone_set", CONNECTION_SYNCH);
+
+    // AnimKitSegment.db2
+    PrepareStatement(HOTFIX_SEL_ANIM_KIT_SEGMENT, "SELECT ID, ParentAnimKitID, OrderIndex, AnimID, AnimStartTime, AnimKitConfigID, StartCondition, "
+        "StartConditionParam, StartConditionDelay, EndCondition, EndConditionParam, EndConditionDelay, Speed, SegmentFlags, "
+        "ForcedVariation, OverrideConfigFlags, LoopToSegmentIndex, BlendInTimeMs, BlendOutTimeMs, Field_9_0_1_34278_018 FROM "
+        "anim_kit_segment WHERE (`VerifiedBuild` > 0) = ?", CONNECTION_SYNCH);
+    PREPARE_MAX_ID_STMT(HOTFIX_SEL_ANIM_KIT_SEGMENT, "SELECT MAX(ID) + 1 FROM anim_kit_segment", CONNECTION_SYNCH);
+
     // AreaGroupMember.db2
     PrepareStatement(HOTFIX_SEL_AREA_GROUP_MEMBER, "SELECT ID, AreaID, AreaGroupID FROM area_group_member WHERE (`VerifiedBuild` > 0) = ?", CONNECTION_SYNCH);
     PREPARE_MAX_ID_STMT(HOTFIX_SEL_AREA_GROUP_MEMBER, "SELECT MAX(ID) + 1 FROM area_group_member", CONNECTION_SYNCH);
@@ -520,6 +536,16 @@ void HotfixDatabaseConnection::DoPrepareStatements()
     PrepareStatement(HOTFIX_SEL_CREATURE_DISPLAY_INFO_EXTRA, "SELECT ID, DisplayRaceID, DisplaySexID, DisplayClassID, Flags, BakeMaterialResourcesID, "
         "HDBakeMaterialResourcesID FROM creature_display_info_extra WHERE (`VerifiedBuild` > 0) = ?", CONNECTION_SYNCH);
     PREPARE_MAX_ID_STMT(HOTFIX_SEL_CREATURE_DISPLAY_INFO_EXTRA, "SELECT MAX(ID) + 1 FROM creature_display_info_extra", CONNECTION_SYNCH);
+
+    // CreatureDisplayInfoGeosetData.db2
+    PrepareStatement(HOTFIX_SEL_CREATURE_DISPLAY_INFO_GEOSET_DATA, "SELECT ID, GeosetIndex, GeosetValue, CreatureDisplayInfoID FROM "
+        "creature_display_info_geoset_data WHERE (`VerifiedBuild` > 0) = ?", CONNECTION_SYNCH);
+    PREPARE_MAX_ID_STMT(HOTFIX_SEL_CREATURE_DISPLAY_INFO_GEOSET_DATA, "SELECT MAX(ID) + 1 FROM creature_display_info_geoset_data", CONNECTION_SYNCH);
+
+    // CreatureDisplayInfoOption.db2
+    PrepareStatement(HOTFIX_SEL_CREATURE_DISPLAY_INFO_OPTION, "SELECT ID, ChrCustomizationOptionID, ChrCustomizationChoiceID, "
+        "CreatureDisplayInfoExtraID FROM creature_display_info_option WHERE (`VerifiedBuild` > 0) = ?", CONNECTION_SYNCH);
+    PREPARE_MAX_ID_STMT(HOTFIX_SEL_CREATURE_DISPLAY_INFO_OPTION, "SELECT MAX(ID) + 1 FROM creature_display_info_option", CONNECTION_SYNCH);
 
     // CreatureFamily.db2
     PrepareStatement(HOTFIX_SEL_CREATURE_FAMILY, "SELECT ID, Name, MinScale, MinScaleLevel, MaxScale, MaxScaleLevel, PetFoodMask, PetTalentType, "
@@ -975,6 +1001,26 @@ void HotfixDatabaseConnection::DoPrepareStatements()
         " FROM item_disenchant_loot WHERE (`VerifiedBuild` > 0) = ?", CONNECTION_SYNCH);
     PREPARE_MAX_ID_STMT(HOTFIX_SEL_ITEM_DISENCHANT_LOOT, "SELECT MAX(ID) + 1 FROM item_disenchant_loot", CONNECTION_SYNCH);
 
+    // ItemDisplayInfo.db2
+    PrepareStatement(HOTFIX_SEL_ITEM_DISPLAY_INFO, "SELECT ID, GeosetGroupOverride, ItemVisual, ParticleColorID, ItemRangedDisplayInfoID, "
+        "OverrideSwooshSoundKitID, SheatheTransformMatrixID, StateSpellVisualKitID, SheathedSpellVisualKitID, "
+        "UnsheathedSpellVisualKitID, Flags, ModelResourcesID1, ModelResourcesID2, ModelMaterialResourcesID1, "
+        "ModelMaterialResourcesID2, ModelType1, ModelType2, GeosetGroup1, GeosetGroup2, GeosetGroup3, GeosetGroup4, GeosetGroup5, "
+        "GeosetGroup6, AttachmentGeosetGroup1, AttachmentGeosetGroup2, AttachmentGeosetGroup3, AttachmentGeosetGroup4, "
+        "AttachmentGeosetGroup5, AttachmentGeosetGroup6, HelmetGeosetVis1, HelmetGeosetVis2 FROM item_display_info WHERE "
+        "(`VerifiedBuild` > 0) = ?", CONNECTION_SYNCH);
+    PREPARE_MAX_ID_STMT(HOTFIX_SEL_ITEM_DISPLAY_INFO, "SELECT MAX(ID) + 1 FROM item_display_info", CONNECTION_SYNCH);
+
+    // ItemDisplayInfoMaterialRes.db2
+    PrepareStatement(HOTFIX_SEL_ITEM_DISPLAY_INFO_MATERIAL_RES, "SELECT ID, ComponentSection, MaterialResourcesID, ItemDisplayInfoID FROM "
+        "item_display_info_material_res WHERE (`VerifiedBuild` > 0) = ?", CONNECTION_SYNCH);
+    PREPARE_MAX_ID_STMT(HOTFIX_SEL_ITEM_DISPLAY_INFO_MATERIAL_RES, "SELECT MAX(ID) + 1 FROM item_display_info_material_res", CONNECTION_SYNCH);
+
+    // ItemDisplayInfoModelMatRes.db2
+    PrepareStatement(HOTFIX_SEL_ITEM_DISPLAY_INFO_MODEL_MAT_RES, "SELECT ID, MaterialResourcesID, TextureType, ModelIndex, ItemDisplayInfoID FROM "
+        "item_display_info_model_mat_res WHERE (`VerifiedBuild` > 0) = ?", CONNECTION_SYNCH);
+    PREPARE_MAX_ID_STMT(HOTFIX_SEL_ITEM_DISPLAY_INFO_MODEL_MAT_RES, "SELECT MAX(ID) + 1 FROM item_display_info_model_mat_res", CONNECTION_SYNCH);
+
     // ItemEffect.db2
     PrepareStatement(HOTFIX_SEL_ITEM_EFFECT, "SELECT ID, LegacySlotIndex, TriggerType, Charges, CoolDownMSec, CategoryCoolDownMSec, SpellCategoryID, "
         "SpellID, ChrSpecializationID, PlayerConditionID FROM item_effect WHERE (`VerifiedBuild` > 0) = ?", CONNECTION_SYNCH);
@@ -1280,6 +1326,11 @@ void HotfixDatabaseConnection::DoPrepareStatements()
     // NameGen.db2
     PrepareStatement(HOTFIX_SEL_NAME_GEN, "SELECT ID, Name, RaceID, Sex FROM name_gen WHERE (`VerifiedBuild` > 0) = ?", CONNECTION_SYNCH);
     PREPARE_MAX_ID_STMT(HOTFIX_SEL_NAME_GEN, "SELECT MAX(ID) + 1 FROM name_gen", CONNECTION_SYNCH);
+
+    // NPCModelItemSlotDisplayInfo.db2
+    PrepareStatement(HOTFIX_SEL_NPC_MODEL_ITEM_SLOT_DISPLAY_INFO, "SELECT ID, ItemDisplayInfoID, ItemSlot, NpcModelID FROM "
+        "npc_model_item_slot_display_info WHERE (`VerifiedBuild` > 0) = ?", CONNECTION_SYNCH);
+    PREPARE_MAX_ID_STMT(HOTFIX_SEL_NPC_MODEL_ITEM_SLOT_DISPLAY_INFO, "SELECT MAX(ID) + 1 FROM npc_model_item_slot_display_info", CONNECTION_SYNCH);
 
     // NamesProfanity.db2
     PrepareStatement(HOTFIX_SEL_NAMES_PROFANITY, "SELECT ID, Name, Language FROM names_profanity WHERE (`VerifiedBuild` > 0) = ?", CONNECTION_SYNCH);

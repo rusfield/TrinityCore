@@ -149,6 +149,59 @@ struct AnimKitLoadInfo
     static constexpr DB2LoadInfo Instance{ Fields, 4, &AnimKitMeta::Instance, HOTFIX_SEL_ANIM_KIT };
 };
 
+struct AnimKitConfigLoadInfo
+{
+    static constexpr DB2FieldMeta Fields[2] =
+    {
+        { .IsSigned = false, .Type = FT_INT, .Name = "ID" },
+        { .IsSigned = true, .Type = FT_INT, .Name = "ConfigFlags" },
+    };
+
+    static constexpr DB2LoadInfo Instance{ Fields, 2, &AnimKitConfigMeta::Instance, HOTFIX_SEL_ANIM_KIT_CONFIG };
+};
+
+struct AnimKitConfigBoneSetLoadInfo
+{
+    static constexpr DB2FieldMeta Fields[4] =
+    {
+        { .IsSigned = false, .Type = FT_INT, .Name = "ID" },
+        { .IsSigned = false, .Type = FT_BYTE, .Name = "AnimKitBoneSetID" },
+        { .IsSigned = false, .Type = FT_SHORT, .Name = "AnimKitPriorityID" },
+        { .IsSigned = false, .Type = FT_INT, .Name = "ParentAnimKitConfigID" },
+    };
+
+    static constexpr DB2LoadInfo Instance{ Fields, 4, &AnimKitConfigBoneSetMeta::Instance, HOTFIX_SEL_ANIM_KIT_CONFIG_BONE_SET };
+};
+
+struct AnimKitSegmentLoadInfo
+{
+    static constexpr DB2FieldMeta Fields[20] =
+    {
+        { .IsSigned = false, .Type = FT_INT, .Name = "ID" },
+        { .IsSigned = false, .Type = FT_SHORT, .Name = "ParentAnimKitID" },
+        { .IsSigned = false, .Type = FT_BYTE, .Name = "OrderIndex" },
+        { .IsSigned = true, .Type = FT_SHORT, .Name = "AnimID" },
+        { .IsSigned = false, .Type = FT_INT, .Name = "AnimStartTime" },
+        { .IsSigned = false, .Type = FT_SHORT, .Name = "AnimKitConfigID" },
+        { .IsSigned = false, .Type = FT_BYTE, .Name = "StartCondition" },
+        { .IsSigned = false, .Type = FT_BYTE, .Name = "StartConditionParam" },
+        { .IsSigned = false, .Type = FT_INT, .Name = "StartConditionDelay" },
+        { .IsSigned = false, .Type = FT_BYTE, .Name = "EndCondition" },
+        { .IsSigned = false, .Type = FT_INT, .Name = "EndConditionParam" },
+        { .IsSigned = false, .Type = FT_INT, .Name = "EndConditionDelay" },
+        { .IsSigned = false, .Type = FT_FLOAT, .Name = "Speed" },
+        { .IsSigned = true, .Type = FT_INT, .Name = "SegmentFlags" },
+        { .IsSigned = false, .Type = FT_BYTE, .Name = "ForcedVariation" },
+        { .IsSigned = true, .Type = FT_INT, .Name = "OverrideConfigFlags" },
+        { .IsSigned = true, .Type = FT_BYTE, .Name = "LoopToSegmentIndex" },
+        { .IsSigned = false, .Type = FT_SHORT, .Name = "BlendInTimeMs" },
+        { .IsSigned = false, .Type = FT_SHORT, .Name = "BlendOutTimeMs" },
+        { .IsSigned = false, .Type = FT_FLOAT, .Name = "Field_9_0_1_34278_018" },
+    };
+
+    static constexpr DB2LoadInfo Instance{ Fields, 20, &AnimKitSegmentMeta::Instance, HOTFIX_SEL_ANIM_KIT_SEGMENT };
+};
+
 struct AreaGroupMemberLoadInfo
 {
     static constexpr DB2FieldMeta Fields[3] =
@@ -1510,6 +1563,32 @@ struct CreatureDisplayInfoExtraLoadInfo
     };
 
     static constexpr DB2LoadInfo Instance{ Fields, 7, &CreatureDisplayInfoExtraMeta::Instance, HOTFIX_SEL_CREATURE_DISPLAY_INFO_EXTRA };
+};
+
+struct CreatureDisplayInfoGeosetDataLoadInfo
+{
+    static constexpr DB2FieldMeta Fields[4] =
+    {
+        { .IsSigned = false, .Type = FT_INT, .Name = "ID" },
+        { .IsSigned = false, .Type = FT_BYTE, .Name = "GeosetIndex" },
+        { .IsSigned = false, .Type = FT_BYTE, .Name = "GeosetValue" },
+        { .IsSigned = false, .Type = FT_INT, .Name = "CreatureDisplayInfoID" },
+    };
+
+    static constexpr DB2LoadInfo Instance{ Fields, 4, &CreatureDisplayInfoGeosetDataMeta::Instance, HOTFIX_SEL_CREATURE_DISPLAY_INFO_GEOSET_DATA };
+};
+
+struct CreatureDisplayInfoOptionLoadInfo
+{
+    static constexpr DB2FieldMeta Fields[4] =
+    {
+        { .IsSigned = false, .Type = FT_INT, .Name = "ID" },
+        { .IsSigned = true, .Type = FT_INT, .Name = "ChrCustomizationOptionID" },
+        { .IsSigned = true, .Type = FT_INT, .Name = "ChrCustomizationChoiceID" },
+        { .IsSigned = false, .Type = FT_INT, .Name = "CreatureDisplayInfoExtraID" },
+    };
+
+    static constexpr DB2LoadInfo Instance{ Fields, 4, &CreatureDisplayInfoOptionMeta::Instance, HOTFIX_SEL_CREATURE_DISPLAY_INFO_OPTION };
 };
 
 struct CreatureFamilyLoadInfo
@@ -3082,6 +3161,73 @@ struct ItemDisenchantLootLoadInfo
     static constexpr DB2LoadInfo Instance{ Fields, 8, &ItemDisenchantLootMeta::Instance, HOTFIX_SEL_ITEM_DISENCHANT_LOOT };
 };
 
+struct ItemDisplayInfoLoadInfo
+{
+    static constexpr DB2FieldMeta Fields[31] =
+    {
+        { .IsSigned = false, .Type = FT_INT, .Name = "ID" },
+        { .IsSigned = true, .Type = FT_INT, .Name = "GeosetGroupOverride" },
+        { .IsSigned = true, .Type = FT_INT, .Name = "ItemVisual" },
+        { .IsSigned = true, .Type = FT_INT, .Name = "ParticleColorID" },
+        { .IsSigned = false, .Type = FT_INT, .Name = "ItemRangedDisplayInfoID" },
+        { .IsSigned = false, .Type = FT_INT, .Name = "OverrideSwooshSoundKitID" },
+        { .IsSigned = true, .Type = FT_INT, .Name = "SheatheTransformMatrixID" },
+        { .IsSigned = true, .Type = FT_INT, .Name = "StateSpellVisualKitID" },
+        { .IsSigned = true, .Type = FT_INT, .Name = "SheathedSpellVisualKitID" },
+        { .IsSigned = false, .Type = FT_INT, .Name = "UnsheathedSpellVisualKitID" },
+        { .IsSigned = true, .Type = FT_INT, .Name = "Flags" },
+        { .IsSigned = false, .Type = FT_INT, .Name = "ModelResourcesID1" },
+        { .IsSigned = false, .Type = FT_INT, .Name = "ModelResourcesID2" },
+        { .IsSigned = true, .Type = FT_INT, .Name = "ModelMaterialResourcesID1" },
+        { .IsSigned = true, .Type = FT_INT, .Name = "ModelMaterialResourcesID2" },
+        { .IsSigned = true, .Type = FT_INT, .Name = "ModelType1" },
+        { .IsSigned = true, .Type = FT_INT, .Name = "ModelType2" },
+        { .IsSigned = true, .Type = FT_INT, .Name = "GeosetGroup1" },
+        { .IsSigned = true, .Type = FT_INT, .Name = "GeosetGroup2" },
+        { .IsSigned = true, .Type = FT_INT, .Name = "GeosetGroup3" },
+        { .IsSigned = true, .Type = FT_INT, .Name = "GeosetGroup4" },
+        { .IsSigned = true, .Type = FT_INT, .Name = "GeosetGroup5" },
+        { .IsSigned = true, .Type = FT_INT, .Name = "GeosetGroup6" },
+        { .IsSigned = true, .Type = FT_INT, .Name = "AttachmentGeosetGroup1" },
+        { .IsSigned = true, .Type = FT_INT, .Name = "AttachmentGeosetGroup2" },
+        { .IsSigned = true, .Type = FT_INT, .Name = "AttachmentGeosetGroup3" },
+        { .IsSigned = true, .Type = FT_INT, .Name = "AttachmentGeosetGroup4" },
+        { .IsSigned = true, .Type = FT_INT, .Name = "AttachmentGeosetGroup5" },
+        { .IsSigned = true, .Type = FT_INT, .Name = "AttachmentGeosetGroup6" },
+        { .IsSigned = true, .Type = FT_INT, .Name = "HelmetGeosetVis1" },
+        { .IsSigned = true, .Type = FT_INT, .Name = "HelmetGeosetVis2" },
+    };
+
+    static constexpr DB2LoadInfo Instance{ Fields, 31, &ItemDisplayInfoMeta::Instance, HOTFIX_SEL_ITEM_DISPLAY_INFO };
+};
+
+struct ItemDisplayInfoMaterialResLoadInfo
+{
+    static constexpr DB2FieldMeta Fields[4] =
+    {
+        { .IsSigned = false, .Type = FT_INT, .Name = "ID" },
+        { .IsSigned = true, .Type = FT_BYTE, .Name = "ComponentSection" },
+        { .IsSigned = true, .Type = FT_INT, .Name = "MaterialResourcesID" },
+        { .IsSigned = false, .Type = FT_INT, .Name = "ItemDisplayInfoID" },
+    };
+
+    static constexpr DB2LoadInfo Instance{ Fields, 4, &ItemDisplayInfoMaterialResMeta::Instance, HOTFIX_SEL_ITEM_DISPLAY_INFO_MATERIAL_RES };
+};
+
+struct ItemDisplayInfoModelMatResLoadInfo
+{
+    static constexpr DB2FieldMeta Fields[5] =
+    {
+        { .IsSigned = false, .Type = FT_INT, .Name = "ID" },
+        { .IsSigned = true, .Type = FT_INT, .Name = "MaterialResourcesID" },
+        { .IsSigned = true, .Type = FT_INT, .Name = "TextureType" },
+        { .IsSigned = true, .Type = FT_INT, .Name = "ModelIndex" },
+        { .IsSigned = false, .Type = FT_INT, .Name = "ItemDisplayInfoID" },
+    };
+
+    static constexpr DB2LoadInfo Instance{ Fields, 5, &ItemDisplayInfoModelMatResMeta::Instance, HOTFIX_SEL_ITEM_DISPLAY_INFO_MODEL_MAT_RES };
+};
+
 struct ItemEffectLoadInfo
 {
     static constexpr DB2FieldMeta Fields[10] =
@@ -4193,6 +4339,19 @@ struct NameGenLoadInfo
     };
 
     static constexpr DB2LoadInfo Instance{ Fields, 4, &NameGenMeta::Instance, HOTFIX_SEL_NAME_GEN };
+};
+
+struct NPCModelItemSlotDisplayInfoLoadInfo
+{
+    static constexpr DB2FieldMeta Fields[4] =
+    {
+        { .IsSigned = false, .Type = FT_INT, .Name = "ID" },
+        { .IsSigned = true, .Type = FT_INT, .Name = "ItemDisplayInfoID" },
+        { .IsSigned = true, .Type = FT_BYTE, .Name = "ItemSlot" },
+        { .IsSigned = false, .Type = FT_INT, .Name = "NpcModelID" },
+    };
+
+    static constexpr DB2LoadInfo Instance{ Fields, 4, &NPCModelItemSlotDisplayInfoMeta::Instance, HOTFIX_SEL_NPC_MODEL_ITEM_SLOT_DISPLAY_INFO };
 };
 
 struct NamesProfanityLoadInfo

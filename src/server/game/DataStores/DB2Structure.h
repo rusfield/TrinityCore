@@ -115,6 +115,44 @@ struct AnimKitEntry
     uint16 LowDefAnimKitID;
 };
 
+struct AnimKitConfigEntry
+{
+    uint32 ID;
+    int32 ConfigFlags;
+};
+
+struct AnimKitConfigBoneSetEntry
+{
+    uint32 ID;
+    uint8 AnimKitBoneSetID;
+    uint16 AnimKitPriorityID;
+    uint32 ParentAnimKitConfigID;
+};
+
+struct AnimKitSegmentEntry
+{
+    uint32 ID;
+    uint16 ParentAnimKitID;
+    uint8 OrderIndex;
+    int16 AnimID;
+    uint32 AnimStartTime;
+    uint16 AnimKitConfigID;
+    uint8 StartCondition;
+    uint8 StartConditionParam;
+    uint32 StartConditionDelay;
+    uint8 EndCondition;
+    uint32 EndConditionParam;
+    uint32 EndConditionDelay;
+    float Speed;
+    int32 SegmentFlags;
+    uint8 ForcedVariation;
+    int32 OverrideConfigFlags;
+    int8 LoopToSegmentIndex;
+    uint16 BlendInTimeMs;
+    uint16 BlendOutTimeMs;
+    float Field_9_0_1_34278_018;
+};
+
 struct AreaGroupMemberEntry
 {
     uint32 ID;
@@ -1116,6 +1154,22 @@ struct CreatureDisplayInfoExtraEntry
     int32 Flags;
     int32 BakeMaterialResourcesID;
     int32 HDBakeMaterialResourcesID;
+};
+
+struct CreatureDisplayInfoGeosetDataEntry
+{
+    uint32 ID;
+    uint8 GeosetIndex;
+    uint8 GeosetValue;
+    uint32 CreatureDisplayInfoID;
+};
+
+struct CreatureDisplayInfoOptionEntry
+{
+    uint32 ID;
+    int32 ChrCustomizationOptionID;
+    int32 ChrCustomizationChoiceID;
+    uint32 CreatureDisplayInfoExtraID;
 };
 
 struct CreatureFamilyEntry
@@ -2423,6 +2477,44 @@ struct ItemDisenchantLootEntry
     uint32 Class;
 };
 
+struct ItemDisplayInfoEntry
+{
+    uint32 ID;
+    int32 GeosetGroupOverride;
+    int32 ItemVisual;
+    int32 ParticleColorID;
+    uint32 ItemRangedDisplayInfoID;
+    uint32 OverrideSwooshSoundKitID;
+    int32 SheatheTransformMatrixID;
+    int32 StateSpellVisualKitID;
+    int32 SheathedSpellVisualKitID;
+    uint32 UnsheathedSpellVisualKitID;
+    int32 Flags;
+    std::array<uint32, 2> ModelResourcesID;
+    std::array<int32, 2> ModelMaterialResourcesID;
+    std::array<int32, 2> ModelType;
+    std::array<int32, 6> GeosetGroup;
+    std::array<int32, 6> AttachmentGeosetGroup;
+    std::array<int32, 2> HelmetGeosetVis;
+};
+
+struct ItemDisplayInfoMaterialResEntry
+{
+    uint32 ID;
+    int8 ComponentSection;
+    int32 MaterialResourcesID;
+    uint32 ItemDisplayInfoID;
+};
+
+struct ItemDisplayInfoModelMatResEntry
+{
+    uint32 ID;
+    int32 MaterialResourcesID;
+    int32 TextureType;
+    int32 ModelIndex;
+    uint32 ItemDisplayInfoID;
+};
+
 struct ItemEffectEntry
 {
     uint32 ID;
@@ -3154,6 +3246,14 @@ struct NameGenEntry
     char const* Name;
     int8 RaceID;
     int8 Sex;
+};
+
+struct NPCModelItemSlotDisplayInfoEntry
+{
+    uint32 ID;
+    int32 ItemDisplayInfoID;
+    int8 ItemSlot;
+    uint32 NpcModelID;
 };
 
 struct NamesProfanityEntry
