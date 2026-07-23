@@ -19,6 +19,11 @@
 
 // The name of this function should match:
 // void Add${NameOfDirectory}Scripts()
+void AddSC_custom_command_animkit();
+void AddSC_custom_command_reload_smart_scripts();
+
 void AddCustomScripts()
 {
+    AddSC_custom_command_animkit();
+    AddSC_custom_command_reload_smart_scripts();
 }

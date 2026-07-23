@@ -295,7 +295,7 @@ public:
         return true;
     }
 
-    static bool HandleAuraCommand(ChatHandler* handler, SpellInfo const* spell)
+    static bool HandleAuraCommand(ChatHandler* handler, SpellInfo const* spell, Optional<uint32> stackAmount)
     {
         Unit* target = handler->getSelectedUnit();
         if (!target)
@@ -308,7 +308,20 @@ public:
         if (!spell)
             return false;
 
-        target->AddAura(spell, MAX_EFFECT_MASK, target);
+        if (stackAmount)
+        {
+            if (*stackAmount == 0)
+            {
+                handler->SendSysMessage(LANG_BAD_VALUE);
+                handler->SetSentErrorMessage(true);
+                return false;
+            }
+
+            target->SetAuraStack(spell->Id, target, *stackAmount);
+        }
+        else
+            target->AddAura(spell, MAX_EFFECT_MASK, target);
+
         return true;
     }
 
